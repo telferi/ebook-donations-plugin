@@ -1,1 +1,6 @@
-
+/* style.css */
+.ebook-donation-donate-box {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
