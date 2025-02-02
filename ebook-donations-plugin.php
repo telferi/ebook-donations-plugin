@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EBook & Donation Plugin
  * Description: Egyszerű eBook értékesítő és támogatói (Donation) plugin Stripe fizetéssel, új felhasználói szerepkörökkel és testreszabott bejelentkezési/ regisztrációs oldalakkal.
- * Version: 1.0
+ * Version: 1.1
  * Author: Frank Smith
  * Text Domain: ebook-donation
  */
@@ -17,10 +17,14 @@ define('EBOOK_DONATION_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('EBOOK_DONATION_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Fájlok betöltése
+require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-admin.php';
+require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-stripe.php';
 require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-ebook-cpt.php';
 require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-membership.php';
 require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-shortcodes.php';
-require_once EBOOK_DONATION_PLUGIN_DIR . 'includes/class-stripe.php';
+
+// Admin init
+add_action('admin_init', ['EBook_Donation_Admin', 'init']);
 
 // Aktiválási hook
 function ebook_donation_plugin_activate() {
